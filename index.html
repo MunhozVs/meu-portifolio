@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>[hidden]{display:none!important} body{margin:0} img{max-width:100%}</style>
+</head>
+<body>
+<title>Elton Rezende</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Elton Rezende — AI Automation & Implementation Engineer. Cases de IA aplicada a operações comerciais.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: left-aligned editorial column; hero = thesis beside a portrait; cases as one featured block + a two-column grid; client voices before contact. */
+:root {
+  --bg: #f3f5f6;
+  --surface: #ffffff;
+  --ink: #0f1b2d;
+  --muted: #55627a;
+  --line: #d8dee6;
+  --accent: #2448d8;
+  --accent-soft: #e4e9fb;
+  --signal: #b8730a;
+  --signal-soft: #fbefd9;
+  --bubble-in: #ffffff;
+  --bubble-out: #dfe6fa;
+  --font-display: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --radius: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b111c; --surface: #121a28; --ink: #e5eaf2; --muted: #9aa6ba; --line: #253046;
+    --accent: #8aa4ff; --accent-soft: #1b2645; --signal: #f0b552; --signal-soft: #33270f;
+    --bubble-in: #172133; --bubble-out: #1f2c4d; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b111c; --surface: #121a28; --ink: #e5eaf2; --muted: #9aa6ba; --line: #253046;
+  --accent: #8aa4ff; --accent-soft: #1b2645; --signal: #f0b552; --signal-soft: #33270f;
+  --bubble-in: #172133; --bubble-out: #1f2c4d; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+/* language switch: Portuguese by default, English with data-lang="en" */
+.en { display: none; }
+:root[data-lang="en"] .en { display: revert; }
+:root[data-lang="en"] .pt { display: none; }
+
+.wrap {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.mono { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.04em; }
+.eyebrow { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.1; text-wrap: balance; margin: 0; letter-spacing: -0.015em; }
+h1 { font-size: clamp(2.4rem, 5.6vw, 4.1rem); font-weight: 700; letter-spacing: -0.03em; }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+h3 { font-size: 1.4rem; }
+p { margin: 0; }
+
+/* header */
+.site-head { border-bottom: 1px solid var(--line); }
+.site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 16px; flex-wrap: wrap; }
+.brand { display: flex; flex-direction: column; gap: 2px; text-decoration: none; color: var(--ink); }
+.brand strong { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; }
+.brand span { color: var(--muted); }
+.head-right { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.nav { display: flex; gap: 18px; flex-wrap: wrap; }
+.nav a { color: var(--muted); text-decoration: none; font-size: 0.92rem; }
+.nav a:hover { color: var(--ink); }
+.lang { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 2px; background: var(--surface); }
+.lang button { font-family: var(--font-mono); font-size: 0.75rem; border: 0; background: transparent; color: var(--muted); padding: 5px 11px; border-radius: 999px; cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+
+/* hero */
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 56px; align-items: center; padding-block: 72px 64px; }
+.hero-copy { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.hero-copy .lede { font-size: 1.12rem; color: var(--muted); max-width: 34em; }
+.ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; font-weight: 600; font-size: 0.95rem; text-decoration: none; border: 1px solid var(--ink); }
+.btn-primary { background: var(--ink); color: var(--bg); }
+.btn-ghost { color: var(--ink); background: transparent; border-color: var(--line); }
+.btn-ghost:hover { border-color: var(--ink); }
+
+/* proof strip */
+.proof { border-block: 1px solid var(--line); background: var(--surface); }
+.proof .wrap { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding-block: 28px; }
+.stat { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.stat b { white-space: nowrap; font-family: var(--font-display); font-size: clamp(1.5rem, 5vw, 2rem); font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.stat span { color: var(--muted); font-size: 0.88rem; line-height: 1.4; }
+
+/* sections */
+.section .wrap { padding-block: 88px; }
+.section-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px; max-width: 46em; }
+.section-head p { color: var(--muted); font-size: 1.05rem; }
+
+/* cases */
+.cases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.case { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.case.featured { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 36px; padding: 36px; }
+.case-main { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.case-tag { color: var(--muted); }
+.case h3 { font-size: 1.45rem; }
+.case.featured h3 { font-size: 1.9rem; }
+.case-block { display: flex; flex-direction: column; gap: 4px; }
+.case-block .label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.case-block p { font-size: 0.97rem; }
+.flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 2px 0; }
+.flow > span { font-family: var(--font-mono); font-size: 0.72rem; padding: 4px 9px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); white-space: nowrap; }
+.flow i { font-style: normal; color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; }
+.results { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.results li { display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: 8px; font-size: 0.95rem; }
+.results li::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--signal); margin-top: 8px; }
+.stack-line { color: var(--muted); }
+.todo { background: var(--signal-soft); color: var(--signal); border-radius: 4px; padding: 0 5px; font-family: var(--font-mono); font-size: 0.85em; }
+
+/* media slots: dashed placeholders until prints/videos arrive */
+.media { display: grid; gap: 12px; min-width: 0; align-content: start; }
+.media.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.slot { margin: 0; border: 1.5px dashed var(--line); border-radius: 8px; background: var(--bg); aspect-ratio: 16 / 10; max-width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4px; padding: 12px; text-align: center; color: var(--muted); }
+.slot.wide { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+.slot .mono { color: var(--accent); }
+.slot span:last-child { font-size: 0.84rem; line-height: 1.35; }
+
+.also { margin-top: 36px; border-top: 1px solid var(--line); padding-top: 24px; display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 20px; }
+.also ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.also li { display: flex; flex-direction: column; gap: 4px; font-size: 0.93rem; min-width: 0; }
+.also li strong { font-family: var(--font-display); font-size: 1.05rem; }
+.also li span { color: var(--muted); }
+
+/* how I think */
+.think { background: var(--surface); border-block: 1px solid var(--line); }
+.think-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 56px; align-items: start; }
+.think-grid .story { display: flex; flex-direction: column; gap: 16px; font-size: 1.08rem; max-width: 36em; }
+.principles { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.principles li { padding: 18px 0; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 4px; }
+.principles li:last-child { border-bottom: 1px solid var(--line); }
+.principles strong { font-family: var(--font-display); font-size: 1.15rem; }
+.principles span { color: var(--muted); font-size: 0.95rem; }
+
+/* stack */
+.stack-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; }
+.stack-col { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.stack-col h3 { font-size: 1rem; font-family: var(--font-mono); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+.stack-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; font-size: 0.95rem; }
+
+/* contact */
+.contact .wrap { padding-block: 88px 64px; }
+.contact-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+.contact-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.contact-list li { display: grid; grid-template-columns: 110px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 14px 0; border-top: 1px solid var(--line); }
+.contact-list li:last-child { border-bottom: 1px solid var(--line); }
+.contact-list .k { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.contact-list .v { overflow-wrap: anywhere; user-select: all; }
+.copy { font-family: var(--font-mono); font-size: 0.72rem; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 4px 10px; cursor: pointer; }
+.site-foot { border-top: 1px solid var(--line); color: var(--muted); font-size: 0.85rem; }
+.site-foot .wrap { padding-block: 22px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+@media (max-width: 920px) {
+  .hero .wrap { grid-template-columns: 1fr; gap: 36px; padding-block: 48px; }
+  .case.featured { grid-template-columns: 1fr; padding: 28px; }
+  .think-grid, .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+  .stack-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .also { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .cases { grid-template-columns: 1fr; }
+  .proof .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .also ul { grid-template-columns: 1fr; }
+  .nav { display: none; }
+  .section .wrap { padding-block: 64px; }
+}
+@media (max-width: 520px) {
+  .media.two { grid-template-columns: 1fr; }
+  .contact-list li { grid-template-columns: 1fr auto; }
+  .contact-list .k { grid-column: 1 / -1; }
+  .case, .case.featured { padding: 22px; }
+}
+
+/* portrait in the hero */
+.portrait { position: relative; margin: 0; justify-self: end; width: min(100%, 440px); min-width: 0; }
+.portrait img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 14px; }
+.badge { position: absolute; left: -18px; bottom: 28px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; box-shadow: 0 10px 30px rgba(15, 27, 45, 0.12); max-width: 230px; }
+.badge strong { font-family: var(--font-display); font-size: 1rem; }
+.badge span { color: var(--muted); font-size: 0.8rem; line-height: 1.35; }
+.stars { color: var(--signal); letter-spacing: 2px; font-size: 0.85rem; }
+
+/* real media */
+.shot { margin: 0; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.shot img, .shot video { display: block; width: 100%; height: auto; max-width: 100%; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); }
+.shot.wide { grid-column: 1 / -1; }
+.shot figcaption { font-size: 0.8rem; color: var(--muted); }
+.case-link { font-weight: 600; font-size: 0.93rem; }
+
+/* testimonials */
+.quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.quote { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.quote blockquote { margin: 0; font-size: 1.05rem; line-height: 1.55; }
+.quote figcaption { display: flex; flex-direction: column; gap: 2px; }
+.quote figcaption strong { font-family: var(--font-display); font-size: 1rem; }
+.quote figcaption span { color: var(--muted); font-size: 0.85rem; }
+.quotes-foot { margin-top: 20px; color: var(--muted); font-size: 0.92rem; }
+
+@media (max-width: 920px) {
+  .portrait { justify-self: start; width: min(100%, 360px); }
+  .badge { left: 12px; bottom: 12px; }
+}
+@media (max-width: 720px) {
+  .quotes { grid-template-columns: 1fr; }
+}
+</style>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#top" id="top">
+      <strong>Elton Rezende</strong>
+      <span class="mono">AI Automation &amp; Implementation Engineer</span>
+    </a>
+    <div class="head-right">
+      <nav class="nav" aria-label="Seções">
+        <a href="#cases">Cases</a>
+        <a href="#depoimentos"><span class="pt">Depoimentos</span><span class="en">Testimonials</span></a>
+        <a href="#como-penso"><span class="pt">Como penso</span><span class="en">How I think</span></a>
+        <a href="#contato"><span class="pt">Contato</span><span class="en">Contact</span></a>
+      </nav>
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button type="button" id="lang-pt" data-set-lang="pt" aria-pressed="true">PT</button>
+        <button type="button" id="lang-en" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="pt">IA aplicada a operações comerciais</span><span class="en">Applied AI for sales operations</span></p>
+        <h1><span class="pt">Eu transformo conversas em operação.</span><span class="en">I turn conversations into operations.</span></h1>
+        <p class="lede">
+          <span class="pt">Construo sistemas que colocam LLMs dentro do WhatsApp, do CRM e da rotina comercial, e que continuam rodando em produção depois da entrega. Cuido do diagnóstico ao deploy e meço o resultado no negócio.</span>
+          <span class="en">I build systems that put LLMs inside WhatsApp, the CRM and the daily sales routine, and keep running in production after handoff. I own the work from diagnosis to deploy and measure the result in the business.</span>
+        </p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="#cases"><span class="pt">Ver cases</span><span class="en">See case studies</span></a>
+          <a class="btn btn-ghost" href="#contato"><span class="pt">Falar comigo</span><span class="en">Get in touch</span></a>
+        </div>
+      </div>
+      <figure class="portrait">
+        <img src="assets/elton.webp" width="720" height="720" alt="Elton Rezende">
+        <figcaption class="badge">
+          <span class="stars" aria-label="5 de 5">★★★★★</span>
+          <strong>Top Rated · Upwork</strong>
+          <span><span class="pt">100% Job Success, todos os contratos avaliados com 5.0</span><span class="en">100% Job Success, every reviewed contract rated 5.0</span></span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="proof" aria-label="Números">
+    <div class="wrap">
+      <div class="stat"><b>8+</b><span><span class="pt">sistemas em produção</span><span class="en">systems in production</span></span></div>
+      <div class="stat"><b>1.000+</b><span><span class="pt">leads processados pelos meus sistemas</span><span class="en">leads processed by my systems</span></span></div>
+      <div class="stat"><b>R$ 0,69</b><span><span class="pt">custo por lead no case de temporada</span><span class="en">cost per lead in the vacation-rental case</span></span></div>
+      <div class="stat"><b>R$ 1M+</b><span><span class="pt">em receita no negócio digital que fundei</span><span class="en">revenue at the digital business I founded</span></span></div>
+    </div>
+  </section>
+
+  <section class="section" id="cases">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow"><span class="pt">Trabalho selecionado</span><span class="en">Selected work</span></p>
+        <h2><span class="pt">Sistemas que estão rodando</span><span class="en">Systems that are running</span></h2>
+        <p><span class="pt">Cada case mostra o problema, o que eu construí, como os dados fluem e o que mudou no negócio. Dados pessoais de clientes finais foram borrados.</span><span class="en">Each case shows the problem, what I built, how the data flows and what changed for the business. End-customer personal data has been blurred.</span></p>
+      </div>
+
+      <div class="cases">
+        <!-- Agiliza -->
+        <article class="case featured">
+          <div class="case-main">
+            <span class="case-tag mono"><span class="pt">Produto próprio · fev/2025 – hoje</span><span class="en">My own product · Feb 2025 – now</span></span>
+            <h3><span class="pt">Agiliza: o CRM que se alimenta das conversas</span><span class="en">Agiliza: the CRM that feeds itself from conversations</span></h3>
+            <div class="case-block">
+              <span class="label"><span class="pt">Problema</span><span class="en">Problem</span></span>
+              <p><span class="pt">Corretores perdem venda porque a memória vira infraestrutura: o contexto fica preso no WhatsApp e o CRM depende de digitação. Vi isso de perto na rotina da minha esposa, que é corretora.</span><span class="en">Real estate agents lose deals because memory becomes the infrastructure: context stays stuck in WhatsApp and the CRM depends on manual typing. I saw it up close in my wife's routine as an agent.</span></p>
+            </div>
+            <div class="case-block">
+              <span class="label"><span class="pt">O que construí</span><span class="en">What I built</span></span>
+              <p><span class="pt">Um CRM "zero-click" que escuta o WhatsApp do corretor, extrai perfil, orçamento e intenção com LLM, pontua o lead, sugere o próximo acompanhamento e recomenda imóveis compatíveis. Inclui Radar de captação na OLX, verificação automática de disponibilidade com proprietários e site do corretor com domínio próprio.</span><span class="en">A "zero-click" CRM that listens to the agent's WhatsApp, extracts profile, budget and intent with an LLM, scores the lead, suggests the next follow-up and recommends matching properties. It includes an OLX listing radar, automated availability checks with owners and agent websites on custom domains.</span></p>
+            </div>
+            <div class="flow" aria-label="Fluxo de dados">
+              <span>WhatsApp</span><i>→</i><span>webhook</span><i>→</i><span>n8n</span><i>→</i><span>LLM · <span class="pt">extração</span><span class="en">extraction</span></span><i>→</i><span>Supabase · RLS</span><i>→</i><span><span class="pt">próxima ação</span><span class="en">next action</span></span>
+            </div>
+            <ul class="results">
+              <li><span class="pt">Em produção, com imobiliária pagante e usuários ativos</span><span class="en">In production with a paying brokerage and active users</span></li>
+              <li><span class="pt">Mais de 1.000 leads processados</span><span class="en">1,000+ leads processed</span></li>
+              <li><span class="pt">Cerca de 10 h/semana de trabalho manual poupadas por corretor</span><span class="en">About 10 hours a week of manual work saved per agent</span></li>
+              <li><span class="pt">O Radar contribuiu para mais de R$ 3 milhões em imóveis captados sem mídia paga</span><span class="en">The radar contributed to R$3M+ in listings sourced with zero ad spend</span></li>
+            </ul>
+            <p class="stack-line mono">Supabase · PostgreSQL · RLS · n8n · LLM APIs · WhatsApp · React</p>
+          </div>
+          <div class="media two">
+            <figure class="shot wide">
+              <video controls preload="none" playsinline poster="assets/demo-poster.webp" width="1280" height="720">
+                <source src="assets/demo.mp4" type="video/mp4">
+              </video>
+              <figcaption><span class="pt">Demo: uma conversa no WhatsApp vira lead, contexto e próxima ação no CRM (5 min)</span><span class="en">Demo: a WhatsApp conversation becomes a lead, context and next action in the CRM (5 min, in Portuguese)</span></figcaption>
+            </figure>
+            <figure class="shot wide">
+              <img src="assets/agiliza-lead.webp" width="1600" height="793" loading="lazy" alt="Ficha do lead no Agiliza com pontuação, resumo gerado por IA e acompanhamento sugerido">
+              <figcaption><span class="pt">Ficha do lead: pontuação, resumo estratégico gerado por IA e acompanhamento sugerido</span><span class="en">Lead record: score, AI-generated strategic summary and suggested follow-up</span></figcaption>
+            </figure>
+            <figure class="shot">
+              <img src="assets/agiliza-radar.webp" width="1600" height="793" loading="lazy" alt="Radar de Captações do Agiliza com imóveis anunciados por proprietários na OLX">
+              <figcaption><span class="pt">Radar de captação na OLX</span><span class="en">OLX listing radar</span></figcaption>
+            </figure>
+            <figure class="shot">
+              <img src="assets/agiliza-site.webp" width="1600" height="793" loading="lazy" alt="Site de corretora gerado pelo Agiliza">
+              <figcaption><span class="pt">Site do corretor integrado ao CRM</span><span class="en">Agent website connected to the CRM</span></figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <!-- ZeroFalta -->
+        <article class="case">
+          <span class="case-tag mono">HealthTech · Upwork · 2026</span>
+          <h3><span class="pt">ZeroFalta: agendamento de clínicas no WhatsApp, pronto para paciente real</span><span class="en">ZeroFalta: clinic scheduling on WhatsApp, hardened for real patients</span></h3>
+          <div class="case-block">
+            <span class="label"><span class="pt">Problema</span><span class="en">Problem</span></span>
+            <p><span class="pt">O MVP de agendamento com IA precisava aguentar o mundo real: gírias, desistências no meio da conversa, datas em pt-BR e dados sensíveis de pacientes.</span><span class="en">The AI scheduling MVP had to survive the real world: slang, mid-conversation drop-offs, Brazilian date formats and sensitive patient data.</span></p>
+          </div>
+          <div class="case-block">
+            <span class="label"><span class="pt">O que fiz</span><span class="en">What I did</span></span>
+            <p><span class="pt">Revisão de arquitetura e QA: um agente roteador classifica cada resposta do paciente (confirmação, dúvida, cancelamento, pedido de humano, opt-out) e aciona o fluxo certo. Adaptei os prompts ao tom brasileiro, criei roteamento de erros, reforcei a segurança dos webhooks e revisei o fluxo de dados à luz da LGPD.</span><span class="en">Architecture review and QA: a router agent classifies each patient reply (confirmation, question, cancellation, human request, opt-out) and triggers the right flow. I adapted prompts to a natural Brazilian tone, added error routing, hardened webhook security and reviewed data flows against LGPD (Brazil's GDPR).</span></p>
+          </div>
+          <div class="flow"><span>Meta WhatsApp API</span><i>→</i><span>n8n</span><i>→</i><span><span class="pt">agente roteador</span><span class="en">router agent</span></span><i>→</i><span>Supabase</span><i>→</i><span>Chatwoot</span></div>
+          <ul class="results"><li><span class="pt">Entregue em dois marcos, avaliação 5.0</span><span class="en">Delivered in two milestones, 5.0 rating</span></li></ul>
+          <figure class="shot">
+            <img src="assets/zerofalta-workflow.webp" width="1600" height="793" loading="lazy" alt="Fluxo n8n do roteador de respostas do ZeroFalta">
+            <figcaption><span class="pt">Roteador de respostas no n8n</span><span class="en">Reply router in n8n</span></figcaption>
+          </figure>
+        </article>
+
+        <!-- E-commerce lead intake -->
+        <article class="case">
+          <span class="case-tag mono"><span class="pt">E-commerce · EUA · Upwork · 2026</span><span class="en">E-commerce · US · Upwork · 2026</span></span>
+          <h3><span class="pt">Captação de leads com IA e dashboard em tempo real para e-commerce</span><span class="en">AI-powered lead intake and smart dashboard for e-commerce</span></h3>
+          <div class="case-block">
+            <span class="label"><span class="pt">O que construí</span><span class="en">What I built</span></span>
+            <p><span class="pt">Leads de várias fontes (chat do site, formulário, e-mail) são lidos por IA, classificados por prioridade e guardados de forma estruturada no Supabase. O sistema reconhece cliente que volta e atualiza o registro em vez de duplicar. Um dashboard mostra status, origem e métricas em tempo real, com notificações no Slack e resposta direto pelo Gmail.</span><span class="en">Leads from multiple sources (site chat, web form, email) are parsed by AI, labeled by priority and stored in structured form in Supabase. The system recognizes returning customers and updates their record instead of duplicating it. A real-time dashboard tracks status, source attribution and performance, with Slack notifications and replies straight from Gmail.</span></p>
+          </div>
+          <div class="flow"><span>Gmail · chat · form</span><i>→</i><span>n8n</span><i>→</i><span><span class="pt">agente de IA</span><span class="en">AI agent</span></span><i>→</i><span>Supabase</span><i>→</i><span>dashboard</span><i>+</i><span>Slack</span></div>
+          <ul class="results"><li><span class="pt">Fluxos escaláveis no n8n com logs estruturados e alertas para visibilidade da operação</span><span class="en">Scalable n8n workflows with structured logging and alerts for operational visibility</span></li></ul>
+          <div class="media two">
+            <figure class="shot">
+              <img src="assets/ecom-dashboard.webp" width="1600" height="793" loading="lazy" alt="Dashboard de leads com indicadores e filtros de prioridade">
+              <figcaption><span class="pt">Dashboard (dados dos clientes borrados)</span><span class="en">Dashboard (customer data blurred)</span></figcaption>
+            </figure>
+            <figure class="shot">
+              <img src="assets/ecom-workflow.webp" width="1600" height="811" loading="lazy" alt="Fluxo n8n de ingestão de leads com IA">
+              <figcaption><span class="pt">Ingestão de leads no n8n</span><span class="en">Lead ingestion in n8n</span></figcaption>
+            </figure>
+          </div>
+          <p><a class="case-link" href="https://www.upwork.com/freelancers/~0109b7e386a7795e11?p=2025320213193728000" target="_blank" rel="noopener"><span class="pt">Ver no Upwork →</span><span class="en">View on Upwork →</span></a></p>
+        </article>
+
+        <!-- Erick -->
+        <article class="case">
+          <span class="case-tag mono"><span class="pt">Salões e barbearias · Reino Unido · Upwork · 2025</span><span class="en">Salons &amp; barbershops · UK · Upwork · 2025</span></span>
+          <h3><span class="pt">Agente de WhatsApp que atende e agenda sozinho</span><span class="en">A WhatsApp agent that answers and books on its own</span></h3>
+          <div class="case-block">
+            <span class="label"><span class="pt">O que construí</span><span class="en">What I built</span></span>
+            <p><span class="pt">O agente recebe texto, áudio e imagem pelo WhatsApp, transcreve áudios, junta mensagens picadas num buffer antes de responder e consulta, marca ou cancela horários na agenda do Google. Usa um modelo principal com fallback automático.</span><span class="en">The agent receives text, audio and images over WhatsApp, transcribes voice notes, buffers split messages before replying, and checks, books or cancels slots in Google Calendar. It runs on a primary model with automatic fallback.</span></p>
+          </div>
+          <div class="flow"><span>Twilio · WhatsApp</span><i>→</i><span>n8n</span><i>→</i><span><span class="pt">buffer</span><span class="en">buffer</span> · Redis</span><i>→</i><span><span class="pt">agente de IA</span><span class="en">AI agent</span></span><i>→</i><span>Google Calendar</span></div>
+          <ul class="results"><li><span class="pt">Entregue em três marcos, avaliação 5.0</span><span class="en">Delivered in three milestones, 5.0 rating</span></li></ul>
+          <figure class="shot">
+            <img src="assets/erik-workflow.webp" width="1600" height="793" loading="lazy" alt="Fluxo n8n do agente de WhatsApp para salões">
+            <figcaption><span class="pt">Fluxo do agente no n8n</span><span class="en">Agent workflow in n8n</span></figcaption>
+          </figure>
+        </article>
+
+        <!-- Casa das Palmeiras -->
+        <article class="case">
+          <span class="case-tag mono"><span class="pt">Temporada · Caraguatatuba · 2026</span><span class="en">Vacation rental · Brazil · 2026</span></span>
+          <h3><span class="pt">Casa das Palmeiras: mais de 100 leads por menos de R$ 90</span><span class="en">Casa das Palmeiras: 100+ leads for under R$90</span></h3>
+          <div class="case-block">
+            <span class="label"><span class="pt">O que construí</span><span class="en">What I built</span></span>
+            <p><span class="pt">Site de reserva direta e campanhas no Google Ads e Meta Ads que levam o hóspede para o WhatsApp do proprietário, sem intermediário.</span><span class="en">A direct-booking website plus Google Ads and Meta Ads campaigns that bring guests to the owner's WhatsApp, with no middleman.</span></p>
+          </div>
+          <div class="flow"><span>Google Ads</span><i>+</i><span>Meta Ads</span><i>→</i><span><span class="pt">site</span><span class="en">website</span></span><i>→</i><span>WhatsApp</span></div>
+          <ul class="results"><li><span class="pt">Mais de 100 leads com menos de R$ 90 investidos: custo por lead de R$ 0,69</span><span class="en">100+ leads from under R$90 in spend: R$0.69 cost per lead</span></li></ul>
+          <figure class="shot">
+            <img src="assets/casa-palmeiras.webp" width="1600" height="793" loading="lazy" alt="Página inicial do site da Casa das Palmeiras">
+            <figcaption><a href="https://casadaspalmeirascaragua.com.br/" target="_blank" rel="noopener">casadaspalmeirascaragua.com.br</a></figcaption>
+          </figure>
+        </article>
+
+        <!-- Funil -->
+        <article class="case">
+          <span class="case-tag mono"><span class="pt">Aquisição · imobiliário · 2025</span><span class="en">Acquisition · real estate · 2025</span></span>
+          <h3><span class="pt">R$ 303 em anúncios, uma venda de R$ 260 mil</span><span class="en">R$303 in ads, a R$260K sale</span></h3>
+          <div class="case-block">
+            <span class="label"><span class="pt">O que construí</span><span class="en">What I built</span></span>
+            <p><span class="pt">Um funil completo para uma corretora autônoma: anúncio, página, qualificação e follow-up personalizado até o CRM.</span><span class="en">A full funnel for an independent agent: ad, landing page, qualification and personalized follow-up into the CRM.</span></p>
+          </div>
+          <div class="flow"><span>Meta Ads</span><i>→</i><span><span class="pt">página</span><span class="en">landing page</span></span><i>→</i><span><span class="pt">qualificação</span><span class="en">qualification</span></span><i>→</i><span>follow-up</span><i>→</i><span>CRM</span></div>
+          <ul class="results"><li><span class="pt">Venda de R$ 260 mil com R$ 303,93 investidos em anúncios</span><span class="en">A R$260K sale from R$303.93 in ad spend</span></li></ul>
+          <p><a class="case-link" href="https://www.upwork.com/freelancers/~0109b7e386a7795e11?p=1980702914780508160" target="_blank" rel="noopener"><span class="pt">Ver o case completo no Upwork →</span><span class="en">See the full case on Upwork →</span></a></p>
+        </article>
+
+        <!-- Negotiator Prime -->
+        <article class="case">
+          <span class="case-tag mono"><span class="pt">Código aberto · 2026</span><span class="en">Open source · 2026</span></span>
+          <h3>Negotiator Prime</h3>
+          <div class="case-block">
+            <span class="label"><span class="pt">O que é</span><span class="en">What it is</span></span>
+            <p><span class="pt">App para Shopify de um bot de negociação, full stack, com testes, CI e arquitetura preparada para funcionalidades de IA.</span><span class="en">A full-stack Shopify app for a negotiation bot, with tests, CI and an architecture ready for AI features.</span></p>
+          </div>
+          <div class="flow"><span>React</span><i>→</i><span>Node.js · TS</span><i>→</i><span>GraphQL · Shopify</span><i>→</i><span>Prisma · Supabase</span></div>
+          <p class="stack-line mono">Node.js · TypeScript · React · GraphQL · Prisma · Docker · MCP</p>
+          <figure class="shot">
+            <img src="assets/negotiator.webp" width="1600" height="793" loading="lazy" alt="Repositório negotiator-prime no GitHub">
+            <figcaption><a href="https://github.com/MunhozVs/negotiator-prime" target="_blank" rel="noopener">github.com/MunhozVs/negotiator-prime</a></figcaption>
+          </figure>
+        </article>
+      </div>
+
+      <div class="also">
+        <p class="eyebrow"><span class="pt">Também entreguei</span><span class="en">Also delivered</span></p>
+        <ul>
+          <li><strong>PRAMIM</strong><span><span class="pt">Arquitetura e implementação de fluxo conversacional no WhatsApp (BotPlugin).</span><span class="en">Architecture and build of a WhatsApp conversational flow (BotPlugin).</span></span></li>
+          <li><strong><span class="pt">Agência de automação · Reino Unido</span><span class="en">Automation agency · UK</span></strong><span><span class="pt">Desenvolvimento por hora com GoHighLevel, Make, n8n e Zapier.</span><span class="en">Hourly development with GoHighLevel, Make, n8n and Zapier.</span></span></li>
+          <li><strong><span class="pt">Lançamento Thiago Decano</span><span class="en">Thiago Decano launch</span></strong><span><span class="pt">Estratégia e automação de lançamento: seis dígitos em sete dias.</span><span class="en">Launch strategy and automation: six figures (BRL) in seven days.</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section think" id="depoimentos">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow"><span class="pt">Depoimentos</span><span class="en">Testimonials</span></p>
+        <h2><span class="pt">O que dizem os clientes</span><span class="en">What clients say</span></h2>
+        <p><span class="pt">Avaliações públicas no Upwork, todas com 5 estrelas. Trechos no idioma original.</span><span class="en">Public Upwork reviews, all five stars. Excerpts as written.</span></p>
+      </div>
+      <div class="quotes">
+        <figure class="quote">
+          <span class="stars" aria-label="5 de 5">★★★★★</span>
+          <blockquote lang="en">“Elton brought solid expertise to a genuinely challenging platform for healthcare clinics, built on n8n, Supabase, and Meta's Business API. He demonstrated…”</blockquote>
+          <figcaption><strong>Rafael Gusmão</strong><span><span class="pt">Fundador do ZeroFalta · Brasil</span><span class="en">Founder, ZeroFalta · Brazil</span></span></figcaption>
+        </figure>
+        <figure class="quote">
+          <span class="stars" aria-label="5 de 5">★★★★★</span>
+          <blockquote lang="en">“Really good experience working with Elton. Easy to communicate with, understood what I needed quickly, and delivered exactly what was agreed. Everything went…”</blockquote>
+          <figcaption><strong>Erick Westin</strong><span><span class="pt">Reino Unido</span><span class="en">United Kingdom</span></span></figcaption>
+        </figure>
+        <figure class="quote">
+          <span class="stars" aria-label="5 de 5">★★★★★</span>
+          <blockquote lang="en">“Elton was very attentive from the beginning, from his detailed proposal, to the alignment call until end of the project. He is responsive, communicative and has…”</blockquote>
+          <figcaption><strong>Max</strong><span><span class="pt">Fundador do PRAMIM · Brasil</span><span class="en">Founder, PRAMIM · Brazil</span></span></figcaption>
+        </figure>
+        <figure class="quote">
+          <span class="stars" aria-label="5 de 5">★★★★★</span>
+          <blockquote lang="en">“Excellent work! Elton built a smooth and reliable automation system that saved me hours of manual work. Communication was clear, delivery was on time, and…”</blockquote>
+          <figcaption><strong>Marija</strong><span>Heritage Mode Maison · <span class="pt">Itália</span><span class="en">Italy</span></span></figcaption>
+        </figure>
+      </div>
+      <p class="quotes-foot"><span class="pt">Também avaliado com 5 estrelas por Raul Jindal, fundador de uma agência de automação no Reino Unido.</span><span class="en">Also rated five stars by Raul Jindal, founder of an automation agency in the UK.</span> <a href="https://www.upwork.com/freelancers/~0109b7e386a7795e11" target="_blank" rel="noopener"><span class="pt">Ler as avaliações completas no Upwork →</span><span class="en">Read the full reviews on Upwork →</span></a></p>
+    </div>
+  </section>
+
+  <section class="section" id="como-penso">
+    <div class="wrap">
+      <div class="think-grid">
+        <div class="story">
+          <p class="eyebrow"><span class="pt">Como eu penso</span><span class="en">How I think</span></p>
+          <h2><span class="pt">Antes dos sistemas, as decisões</span><span class="en">Before systems, decisions</span></h2>
+          <p><span class="pt">Vivi anos de poker profissional e fundei uma escola de poker online que faturou mais de R$ 1 milhão. O jogo me ensinou a separar a qualidade de uma decisão do resultado de curto prazo, a ler padrões em informação incompleta e a decidir com dados.</span><span class="en">I spent years as a professional poker player and founded an online poker school that made over R$1M in revenue. The game taught me to separate the quality of a decision from its short-term result, to read patterns in incomplete information and to decide with data.</span></p>
+          <p><span class="pt">Hoje eu aplico isso em sistemas. Um bom CRM é uma máquina de decidir quem merece atenção agora, por quê e qual é o próximo passo.</span><span class="en">Today I apply that to systems. A good CRM is a machine for deciding who deserves attention now, why, and what the next step is.</span></p>
+        </div>
+        <ul class="principles">
+          <li><strong><span class="pt">Problema real antes da ferramenta</span><span class="en">Real problem before the tool</span></strong><span><span class="pt">O Agiliza nasceu de uma automação para resolver a rotina de uma pessoa, não de uma ideia de produto.</span><span class="en">Agiliza started as an automation for one person's routine, not as a product idea.</span></span></li>
+          <li><strong><span class="pt">Produção vale mais que demo</span><span class="en">Production beats demo</span></strong><span><span class="pt">Edge cases, erros, limites de API e LGPD fazem parte da entrega.</span><span class="en">Edge cases, errors, API limits and data privacy are part of the delivery.</span></span></li>
+          <li><strong><span class="pt">Medir o que o negócio sente</span><span class="en">Measure what the business feels</span></strong><span><span class="pt">Horas poupadas, leads recuperados e vendas, não número de nós no fluxo.</span><span class="en">Hours saved, leads recovered and sales, not the number of nodes in a workflow.</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section think" id="stack">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Stack</p>
+        <h2><span class="pt">Ferramentas que uso em produção</span><span class="en">Tools I use in production</span></h2>
+      </div>
+      <div class="stack-grid">
+        <div class="stack-col"><h3><span class="pt">IA</span><span class="en">AI</span></h3><ul><li><span class="pt">APIs de LLM</span><span class="en">LLM APIs</span></li><li><span class="pt">Agentes e tool calling</span><span class="en">Agents and tool calling</span></li><li>MCP</li><li>RAG</li><li>Prompt engineering</li><li>Dify · Voiceflow</li></ul></div>
+        <div class="stack-col"><h3><span class="pt">Automação</span><span class="en">Automation</span></h3><ul><li><span class="pt">n8n (avançado)</span><span class="en">n8n (advanced)</span></li><li>Make · Zapier</li><li>Meta WhatsApp API</li><li>Twilio · Chatwoot</li><li>GoHighLevel</li></ul></div>
+        <div class="stack-col"><h3><span class="pt">Engenharia</span><span class="en">Engineering</span></h3><ul><li>TypeScript · JavaScript</li><li>Node.js</li><li>React · Next.js</li><li>REST · GraphQL</li><li>Webhooks</li></ul></div>
+        <div class="stack-col"><h3><span class="pt">Dados e infra</span><span class="en">Data &amp; infra</span></h3><ul><li>PostgreSQL · SQL</li><li>Supabase · RLS</li><li>Redis · Prisma</li><li>Docker · Linux</li><li>Git · GitHub</li></ul></div>
+        <div class="stack-col"><h3>Growth</h3><ul><li>Meta Ads · Google Ads</li><li><span class="pt">Funis de aquisição</span><span class="en">Acquisition funnels</span></li><li>VSL</li><li><span class="pt">Outreach automatizado</span><span class="en">Automated outreach</span></li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contato">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="section-head" style="margin:0">
+          <p class="eyebrow"><span class="pt">Contato</span><span class="en">Contact</span></p>
+          <h2><span class="pt">Vamos conversar</span><span class="en">Let's talk</span></h2>
+          <p><span class="pt">Aberto a vagas de AI Engineer, Implementation e Solutions Engineer (remoto, CLT ou PJ) e a projetos de automação com IA.</span><span class="en">Open to AI Engineer, Implementation and Solutions Engineer roles (remote, full-time or contract) and to AI automation projects.</span></p>
+        </div>
+        <ul class="contact-list">
+          <li><span class="k">E-mail</span><span class="v" id="email-v">spp_munhoz@hotmail.com</span><button type="button" class="copy" data-copy="email-v"><span class="pt">copiar</span><span class="en">copy</span></button></li>
+          <li><span class="k">WhatsApp</span><span class="v" id="phone-v">+55 11 95499-4549</span><button type="button" class="copy" data-copy="phone-v"><span class="pt">copiar</span><span class="en">copy</span></button></li>
+          <li><span class="k">LinkedIn</span><span class="v"><a href="https://www.linkedin.com/in/elton-a-rezende-b6425636b/" target="_blank" rel="noopener">elton-a-rezende</a></span><span></span></li>
+          <li><span class="k">GitHub</span><span class="v"><a href="https://github.com/MunhozVs" target="_blank" rel="noopener">github.com/MunhozVs</a></span><span></span></li>
+          <li><span class="k">Upwork</span><span class="v"><a href="https://www.upwork.com/freelancers/~0109b7e386a7795e11" target="_blank" rel="noopener"><span class="pt">Perfil Top Rated</span><span class="en">Top Rated profile</span></a></span><span></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span>Elton A. Rezende · Caraguatatuba, SP · UTC−3</span>
+    <span><span class="pt">Português nativo · inglês fluente</span><span class="en">Native Portuguese · fluent English</span></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  function setLang(l) {
+    root.setAttribute('data-lang', l);
+    root.setAttribute('lang', l === 'en' ? 'en' : 'pt-BR');
+    document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-set-lang') === l ? 'true' : 'false');
+    });
+    try { localStorage.setItem('er-lang', l); } catch (e) {}
+  }
+  var initial = 'pt';
+  if (location.hash === '#en') initial = 'en';
+  else { try { initial = localStorage.getItem('er-lang') || 'pt'; } catch (e) {} }
+  setLang(initial);
+  document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang')); });
+  });
+
+  document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(btn.getAttribute('data-copy'));
+      var text = el.textContent.trim();
+      function selectIt() {
+        var r = document.createRange(); r.selectNodeContents(el);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          var old = btn.innerHTML; btn.textContent = '✓';
+          setTimeout(function () { btn.innerHTML = old; }, 1400);
+        }, selectIt);
+      } else { selectIt(); }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
