@@ -1,11 +1,4 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<style>[hidden]{display:none!important} body{margin:0} img{max-width:100%}</style>
-</head>
-<body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Elton Rezende</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Elton Rezende — AI Automation & Implementation Engineer. Cases de IA aplicada a operações comerciais.">
@@ -15,15 +8,20 @@
 <style>
 /* Layout: left-aligned editorial column; hero = thesis beside a portrait; cases as one featured block + a two-column grid; client voices before contact. */
 :root {
-  --bg: #f3f5f6;
+  --bg: #f5f6f3;
   --surface: #ffffff;
   --ink: #0f1b2d;
   --muted: #55627a;
   --line: #d8dee6;
-  --accent: #2448d8;
-  --accent-soft: #e4e9fb;
-  --signal: #b8730a;
-  --signal-soft: #fbefd9;
+  --accent: #8a6400;
+  --accent-soft: #fff3c4;
+  --signal: #9a7000;
+  --signal-soft: #fff3c4;
+  --yellow: #ffdd55;
+  --link: #0f1b2d;
+  --band: #0f1b2d;
+  --band-fg: #eef2f8;
+  --band-muted: #aab6c9;
   --bubble-in: #ffffff;
   --bubble-out: #dfe6fa;
   --font-display: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
@@ -34,13 +32,13 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0b111c; --surface: #121a28; --ink: #e5eaf2; --muted: #9aa6ba; --line: #253046;
-    --accent: #8aa4ff; --accent-soft: #1b2645; --signal: #f0b552; --signal-soft: #33270f;
+    --accent: #ffdd55; --accent-soft: #2b2612; --signal: #ffdd55; --signal-soft: #2b2612; --yellow: #ffdd55; --link: #ffdd55; --band: #131c2c; --band-fg: #eef2f8; --band-muted: #9aa6ba;
     --bubble-in: #172133; --bubble-out: #1f2c4d; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0b111c; --surface: #121a28; --ink: #e5eaf2; --muted: #9aa6ba; --line: #253046;
-  --accent: #8aa4ff; --accent-soft: #1b2645; --signal: #f0b552; --signal-soft: #33270f;
+  --accent: #ffdd55; --accent-soft: #2b2612; --signal: #ffdd55; --signal-soft: #2b2612; --yellow: #ffdd55; --link: #ffdd55; --band: #131c2c; --band-fg: #eef2f8; --band-muted: #9aa6ba;
   --bubble-in: #172133; --bubble-out: #1f2c4d; color-scheme: dark;
 }
 
@@ -52,7 +50,7 @@ body {
   font-family: var(--font-body); font-size: 16px; line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
-a { color: var(--accent); text-underline-offset: 3px; }
+a { color: var(--link); text-decoration-color: var(--yellow); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
 /* language switch: Portuguese by default, English with data-lang="en" */
@@ -94,15 +92,19 @@ p { margin: 0; }
 .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; font-weight: 600; font-size: 0.95rem; text-decoration: none; border: 1px solid var(--ink); }
 .btn-primary { background: var(--ink); color: var(--bg); }
+.btn-primary:hover { box-shadow: inset 0 -3px 0 var(--yellow); }
+mark.hl { background: linear-gradient(transparent 62%, var(--yellow) 62%, var(--yellow) 92%, transparent 92%); color: inherit; padding: 0 2px; }
+:root[data-theme="dark"] mark.hl { background: none; color: var(--yellow); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) mark.hl { background: none; color: var(--yellow); } }
 .btn-ghost { color: var(--ink); background: transparent; border-color: var(--line); }
 .btn-ghost:hover { border-color: var(--ink); }
 
-/* proof strip */
-.proof { border-block: 1px solid var(--line); background: var(--surface); }
-.proof .wrap { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding-block: 28px; }
+/* proof strip: navy band like the LinkedIn banner */
+.proof { background: var(--band); color: var(--band-fg); border-block: 1px solid var(--band); }
+.proof .wrap { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding-block: 30px; }
 .stat { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
-.stat b { white-space: nowrap; font-family: var(--font-display); font-size: clamp(1.5rem, 5vw, 2rem); font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
-.stat span { color: var(--muted); font-size: 0.88rem; line-height: 1.4; }
+.stat b { white-space: nowrap; font-family: var(--font-display); font-size: clamp(1.5rem, 5vw, 2.1rem); font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--yellow); }
+.stat span { color: var(--band-muted); font-size: 0.9rem; line-height: 1.4; }
 
 /* sections */
 .section .wrap { padding-block: 88px; }
@@ -125,7 +127,7 @@ p { margin: 0; }
 .flow i { font-style: normal; color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; }
 .results { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
 .results li { display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: 8px; font-size: 0.95rem; }
-.results li::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--signal); margin-top: 8px; }
+.results li::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--yellow); box-shadow: 0 0 0 1px rgba(15, 27, 45, 0.25); margin-top: 8px; }
 .stack-line { color: var(--muted); }
 .todo { background: var(--signal-soft); color: var(--signal); border-radius: 4px; padding: 0 5px; font-family: var(--font-mono); font-size: 0.85em; }
 
@@ -180,7 +182,7 @@ p { margin: 0; }
 }
 @media (max-width: 720px) {
   .cases { grid-template-columns: 1fr; }
-  .proof .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .proof .wrap { grid-template-columns: 1fr; gap: 16px; }
   .also ul { grid-template-columns: 1fr; }
   .nav { display: none; }
   .section .wrap { padding-block: 64px; }
@@ -194,11 +196,11 @@ p { margin: 0; }
 
 /* portrait in the hero */
 .portrait { position: relative; margin: 0; justify-self: end; width: min(100%, 440px); min-width: 0; }
-.portrait img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 14px; }
+.portrait img { box-shadow: 0 0 0 1px var(--line); display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 14px; }
 .badge { position: absolute; left: -18px; bottom: 28px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; box-shadow: 0 10px 30px rgba(15, 27, 45, 0.12); max-width: 230px; }
 .badge strong { font-family: var(--font-display); font-size: 1rem; }
 .badge span { color: var(--muted); font-size: 0.8rem; line-height: 1.35; }
-.stars { color: var(--signal); letter-spacing: 2px; font-size: 0.85rem; }
+.stars { color: #e0b100; letter-spacing: 2px; font-size: 0.85rem; }
 
 /* real media */
 .shot { margin: 0; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
@@ -251,7 +253,7 @@ p { margin: 0; }
     <div class="wrap">
       <div class="hero-copy">
         <p class="eyebrow"><span class="pt">IA aplicada a operações comerciais</span><span class="en">Applied AI for sales operations</span></p>
-        <h1><span class="pt">Eu transformo conversas em operação.</span><span class="en">I turn conversations into operations.</span></h1>
+        <h1><span class="pt">Eu transformo conversas em <mark class="hl">operação.</mark></span><span class="en">I turn conversations into <mark class="hl">operations.</mark></span></h1>
         <p class="lede">
           <span class="pt">Construo sistemas que colocam LLMs dentro do WhatsApp, do CRM e da rotina comercial, e que continuam rodando em produção depois da entrega. Cuido do diagnóstico ao deploy e meço o resultado no negócio.</span>
           <span class="en">I build systems that put LLMs inside WhatsApp, the CRM and the daily sales routine, and keep running in production after handoff. I own the work from diagnosis to deploy and measure the result in the business.</span>
@@ -276,7 +278,6 @@ p { margin: 0; }
     <div class="wrap">
       <div class="stat"><b>8+</b><span><span class="pt">sistemas em produção</span><span class="en">systems in production</span></span></div>
       <div class="stat"><b>1.000+</b><span><span class="pt">leads processados pelos meus sistemas</span><span class="en">leads processed by my systems</span></span></div>
-      <div class="stat"><b>R$ 0,69</b><span><span class="pt">custo por lead no case de temporada</span><span class="en">cost per lead in the vacation-rental case</span></span></div>
       <div class="stat"><b>R$ 1M+</b><span><span class="pt">em receita no negócio digital que fundei</span><span class="en">revenue at the digital business I founded</span></span></div>
     </div>
   </section>
@@ -584,5 +585,4 @@ p { margin: 0; }
 })();
 </script>
 
-</body>
-</html>
+</body></html>
